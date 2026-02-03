@@ -1,0 +1,126 @@
+Application Flow – GenAI Legal Assistant
+1️⃣ User Input
+
+User uploads a contract (PDF / DOCX / TXT)
+OR
+
+User pastes contract text manually
+
+2️⃣ Text Extraction
+
+PDF → Extract text using pdfplumber
+
+DOCX → Read paragraphs using python-docx
+
+TXT → Direct UTF-8 read
+
+3️⃣ Language Normalization
+
+Detect Hindi content
+
+Translate full sentences from Hindi → English
+
+Ensures all further NLP runs on English text only
+
+Hindi Contract → English Contract
+
+4️⃣ NLP Processing
+
+Performed using custom Python logic:
+
+Contract Type Classification
+(Employment / Vendor / Lease / Partnership / Service)
+
+Clause & sub-clause extraction
+
+Named Entity Detection:
+
+Parties
+
+Dates
+
+Amounts
+
+Jurisdiction
+
+Clause Role Identification:
+
+Obligation
+
+Right
+
+Prohibition
+
+5️⃣ Risk Analysis
+
+For each clause:
+
+Detect risky patterns:
+
+Penalty clauses
+
+Indemnity
+
+Unilateral termination
+
+Non-compete
+
+Auto-renewal
+
+Assign clause-level risk
+
+Low / Medium / High
+
+6️⃣ Contract Risk Scoring
+
+Combine all clause risks
+
+Generate overall contract risk score (%)
+
+7️⃣ Plain-Language Explanation (GenAI Logic)
+
+For every clause:
+
+Simplified business explanation
+
+Why the clause may be risky
+
+Suggested SME-friendly alternative
+
+8️⃣ User Interface Output (Streamlit)
+
+Contract type displayed
+
+Overall risk score
+
+Expandable clause-by-clause view:
+
+Original clause
+
+Risk level
+
+Explanation
+
+Suggested rewrite
+
+9️⃣ Audit Logging
+
+Every analysis action logged locally:
+
+{
+  "event": "ANALYSIS_COMPLETE",
+  "risk_score": 72,
+  "timestamp": "..."
+}
+
+🔟 PDF Export
+
+Full report generated:
+
+Summary
+
+Risk score
+
+Clause analysis
+
+Downloadable PDF for lawyer consultation
