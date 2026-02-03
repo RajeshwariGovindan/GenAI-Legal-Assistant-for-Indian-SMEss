@@ -1,0 +1,1 @@
+# GenAI-Legal-Assistant-for-Indian-SMEss
